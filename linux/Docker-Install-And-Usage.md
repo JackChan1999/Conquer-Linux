@@ -245,10 +245,7 @@ java -jar /root/spring-boot-my-demo.jar
     - `docker ps -q`：列出最近一次运行的container ID
     - `docker ps -n x`：显示最后 x 个容器，不管是正在运行或是已经停止的
 - `docker inspect 容器ID`：查看容器的全面信息，用 JSON 格式输出
-  - 获取容器中的 IP：
-  ```bash
-  docker inspect -f '{{.NetworkSettings.IPAddress}}' 容器ID
-  ```
+  - 获取容器中的 IP：{% raw %}docker inspect -f '{{.NetworkSettings.IPAddress}}' 容器ID{% endraw %}
   - 给容器重新设置 IP 和 子网掩码，需要在宿主上：`ifconfig 容器ID 192.168.200.1 netmask 255.255.255.0`
 - `docker top 容器ID`：显示容器的进程信息
 - `docker events`：得到 docker 服务器的实时的事件
