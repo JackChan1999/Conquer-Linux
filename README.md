@@ -1,4 +1,4 @@
-# Linux-Tutorial
+# 征服 Linux
 
 > 十年生死两茫茫，不思量，自难忘，华年短暂，陈辞岁月悠悠伤，
 >
@@ -16,13 +16,13 @@
 
 ## GitHub托管
 
-https://github.com/JackChan1999/RxJava_Docs_For_Android_Developer
+https://github.com/JackChan1999/Conquer-Linux
 
 ## GitBook在线阅读
 
 在线阅读，PDF、ePub、Mobi电子书下载
 
-https://www.gitbook.com/book/alleniverson/rxjava-docs-for-android-developer/details
+https://www.gitbook.com/book/alleniverson/linux/details
 
 
 ## 鸟哥的Linux私房菜 简体中文
@@ -112,3 +112,12 @@ http://wiki.jikexueyuan.com/project/linux-in-eye-of-java/
 - Docker 安装和配置
 - sed 学习
 - 常用脚本
+
+## 关注我
+
+- Email：<619888095@qq.com>
+- CSDN博客：[Allen Iverson](http://blog.csdn.net/axi295309066)
+- 新浪微博：[AndroidDeveloper](http://weibo.com/u/1848214604?topnav=1&wvr=6&topsug=1&is_all=1)
+- GitHub：[JackChan1999](https://github.com/JackChan1999)
+- GitBook：[alleniverson](https://www.gitbook.com/@alleniverson)
+- 个人博客：[JackChan](https://jackchan1999.github.io/)
