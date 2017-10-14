@@ -14,9 +14,7 @@
 
 - 编辑配置文件是：`sudo vim /etc/vimrc`
 
-
 ## Vim 基础快捷键
-
 
 - 注意
     - 严格区分字母大小写
@@ -103,15 +101,13 @@
 - 复制到某个剪切板的命令：`"7y`，表示使用 7 号剪切板。
 - 黏贴某个剪切板内容：`"7p`，表示使用 7 号剪切板内容进行黏贴
 
-
-
 ## Vim 配置
 
 - 我个人本地不使用 Vim 的，基本上都是在操作服务器的时候使用，所以这里推荐这个配置文件
 	- [vim-for-server](https://github.com/wklken/vim-for-server)
 	- 在假设你已经备份好你的 Vim 配置文件后，使用该配置文件：`curl https://raw.githubusercontent.com/wklken/vim-for-server/master/vimrc > ~/.vimrc`
 	- 效果如下：
-		- ![vim-for-server](https://raw.githubusercontent.com/wklken/gallery/master/vim/vim-for-server.png)
+		- ![vim-for-server](images/vim-for-server.png)
 
 ## 资料
 
