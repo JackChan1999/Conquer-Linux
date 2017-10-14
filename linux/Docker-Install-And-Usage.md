@@ -73,7 +73,7 @@ Edge builds are released once per month, and are supported for that month only. 
 - 安装过程：
     - `sudo yum install -y yum-utils`
 
-    ``` bash
+    ```bash
        ：添加 repo（可能网络会很慢，有时候会报：Timeout，所以要多试几次）
     sudo yum-config-manager \
         --add-repo \
@@ -116,7 +116,6 @@ Edge builds are released once per month, and are supported for that month only. 
     For more examples and ideas, visit:
     https://docs.docker.com/engine/userguide/
     ```
-
 
 ## 镜像加速
 
@@ -175,7 +174,7 @@ Edge builds are released once per month, and are supported for that month only. 
 - 把容器中 /opt 目录下的 spring-boot-my-demo.jar 拷贝到容器的 root 目录下：`cp /opt/spring-boot-my-demo.jar /root`
 - 再容器里新建脚本：`vi /root/spring-boot-run.sh`，脚本内容如下：
 
-``` bash
+```bash
 #!/bin/bash
 source /etc/profile
 java -jar /root/spring-boot-my-demo.jar
@@ -311,8 +310,6 @@ java -jar /root/spring-boot-my-demo.jar
   - `docker cp ID:/container_path to_path`
 - `docker diff`：显示容器文件系统的前后变化
 
-
-
 版本信息
 
 - `docker version`，查看docker版本
@@ -322,12 +319,12 @@ java -jar /root/spring-boot-my-demo.jar
 
 删除老的(一周前创建)容器
 
-```
+```bash
 docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs docker rm
 
 docker version 查看版本号
 docker pull hello-world       #下载镜像
-docker images                    #查看镜像
+docker images                 #查看镜像
 docker ps -a   #查看当前启动的容器进程
 docker ps -a -l #列出最后一次运行的容器
 
@@ -347,7 +344,7 @@ docker search //搜索镜像
 
 运行一个镜像
 
-```
+```bash
 docker run -i -t -p 3000:3000 ubuntu:16.04 /bin/bash
 ```
 
@@ -356,12 +353,15 @@ docker run -i -t -p 3000:3000 ubuntu:16.04 /bin/bash
 -p 3000:3000 把容器（下面有解释）的3000端口映射到本机3000端口
 
 那就是把修改后的系统再打为iso就可以了。即，把容器再打为镜像即可。
+
 退出容器
-查看容器 docker ps -a
 
-
-查看镜像：docker images
-
+```bash
+# 查看容器
+docker ps -a
+# 查看镜像：
+docker images
+```
 
 上传镜像
 
@@ -372,7 +372,6 @@ docker run -i -t -p 3000:3000 ubuntu:16.04 /bin/bash
 - 登录docker login
 - 上传docker push ryzebo/docker-nodejs-test:0.1
 - 此时在https://store.docker.com/搜索ryzebo/docker-nodejs-test（搜索你自己的哦），就会看到你刚刚上传的镜像了
-
 
 ```bash
 # 创建一个要进行修改的定制容器
@@ -396,7 +395,7 @@ sudo docker run -t -i jamtur01/apache2:webserver /bin/bash
 
 用以下命令，根据某个“容器 ID”来创建一个新的“镜像”：
 
-```
+```bash
 docker commit 57c312bbaad1 huangyong/javaweb:0.1
 docker commit 89a47b5b749e  lin_javaweb:0.1
 docker run -d -p 58080:8080 --name javaweb huangyong/javaweb:0.1 /root/run.sh
@@ -453,86 +452,104 @@ Docker-compose：脚本化批量创建容器
 
 并不推荐使用docker commit的方法来构建镜像，相反推荐使用Dockerfile的定义文件和docker build命令来构建镜像。Dockerfile使用基于DLS语法的指令来构建一个Docker镜像，之后使用docker build命令基于该dockerfile中的指令构建一个新的镜像。步骤：（我们将创建一个包含简单web服务器的docker镜像）
 
-    创建一个目录并在里面创建初始化的Dockerfile
+创建一个目录并在里面创建初始化的Dockerfile
 
-    mkdir static_web
-    cd static_web
-    touch Dockerfile
+```bash
+mkdir static_web
+cd static_web
+touch Dockerfile
+```
+dockerfile文件内容
 
-    dockerfile文件内容
+```bash
+#第一个Dockerfile
+#Version：0.0.1
+FROM ubuntu:14.04
+MAINTAINER James Turnbull "james@example.com"
+RUN apt-get update
+RUN apt-get install -y nginx
+RUN echo 'Hi, I am in your container' > /usr/share/nginx/html/index.html
+expose 80
+```
+dockerfile指令解释
+Docker大体按照如下流程执行Dockerfile中的指令
 
-    #第一个Dockerfile
-    #Version：0.0.1
-    FROM ubuntu:14.04
-    MAINTAINER James Turnbull "james@example.com"
-    RUN apt-get update
-    RUN apt-get install -y nginx
-    RUN echo 'Hi, I am in your container' > /usr/share/nginx/html/index.html
-    expose 80
-    dockerfile指令解释
-    Docker大体按照如下流程执行Dockerfile中的指令
-        Docker从基础镜像运行一个容器。
-        执行一条指令，对容器做出修改。
-        执行类似docker commit的操作，提交一个新的镜像层。
-        Docker在基于刚提交的镜像运行一个新容器。
-        执行Dockerfile中的下一条指令，直到所有指令都执行完毕。
-    基于dockerfile镜像构建新镜像
-    执行docker build命令时，dockerfile中的指令都会被执行并且被提交，并且在该命令成功结束后返回一个新镜像。
+- Docker从基础镜像运行一个容器。
+- 执行一条指令，对容器做出修改。
+- 执行类似docker commit的操作，提交一个新的镜像层。
+- Docker在基于刚提交的镜像运行一个新容器。
+- 执行Dockerfile中的下一条指令，直到所有指令都执行完毕。
 
-    #运行Dockerfile
-    cd static_web
-    sudo docker build  -t="jamtur01/static_web" .
+基于dockerfile镜像构建新镜像
+执行docker build命令时，dockerfile中的指令都会被执行并且被提交，并且在该命令成功结束后返回一个新镜像。
 
-    使用docker build命令来构建新镜像，通过-t为新镜像设置了仓库和名称。在本例仓库为jamtur01,镜像名为static_web。建议为自己的镜像设置合适的名字以方便追踪和管理。也可以设置标签，如：
+```bash
+#运行Dockerfile
+cd static_web
+sudo docker build  -t="jamtur01/static_web" .
+```
+使用docker build命令来构建新镜像，通过-t为新镜像设置了仓库和名称。在本例仓库为jamtur01,镜像名为static_web。建议为自己的镜像设置合适的名字以方便追踪和管理。也可以设置标签，如：
+```bash
+sudo docker build -t="jamtur01/static_web:v1" .
+```
+上面告诉docker到本地目录中去找Dockerfile文件，也可以指定一个Git仓库的源地址来指定Dockerfile的位置。
 
-    sudo docker build -t="jamtur01/static_web:v1" .
-
-    上面告诉docker到本地目录中去找Dockerfile文件，也可以指定一个Git仓库的源地址来指定Dockerfile的位置。
-
-    sudo docker build -t="jamtur01/static_web:v1 git@github.com:jamtur01/docker-static_web
-
+```bash
+sudo docker build -t="jamtur01/static_web:v1 git@github.com:jamtur01/docker-static_web
+```
 忽略dockerfile的构建缓存
 
+```bash
 sudo docker build --no-cache -t="jamtur01/static_web"
-
+```
 查看新镜像
 
+```bash
 sudo docker images jamtur01/static_web
-
+```
 查看镜像如何构建出来的
-
+```bash
 sudo docker history22d47c8cb3jkk
-
+```
 从新镜像启动一个容器
-
+```bash
 sudo docker run -d -p 80 --name static_web jamtur01/static_web nginx -g "daemon off;"
+```
 
 -d:说明在后台运行
 -p:控制docker在运行时应该公开哪些网络端口给宿主机,-p还可以灵活的管理容器和宿主机之间的端口映射关系
 
+```bash
 sudo docker run -d -p 80:80 --name static_web jamtur01/static_web nginx -g "daemon off;"
 sudo docker run -d -p 8080:80 --name static_web jamtur01/static_web nginx -g "daemon off;"
 #端口限制在特定的IP上
 sudo docker run -d -p 127.0.0.1:8080:80 --name static_web jamtur01/static_web nginx -g "daemon off;"
-
+```
 -P:可以用来对外公开在Dockerfile中EXPOSE指令中设置的所有端口
 
+```bash
 sudo docker run -d -P --name static_web jamtur01/static_web nginx -g "daemon off;"
-
+```
 运行一个容器时，Docker可以通过两种方法来在宿主机上分配端口。
 
-    Docker可以在宿主机上随机选择一个位于49153~65535的一个比较大的端口好来映射到容器中的80端口上。
-    可以在Docker宿主机中指定一个具体的端口好来映射到容器中的80端口上。
+Docker可以在宿主机上随机选择一个位于49153~65535的一个比较大的端口好来映射到容器中的80端口上。
+可以在Docker宿主机中指定一个具体的端口好来映射到容器中的80端口上。
 
 查看docker端口映射情况
 
+```bash
 sudo docker ps -l
-##指定要查看映射情况的容器ID和容器的端口号
+```
+## 指定要查看映射情况的容器ID和容器的端口号
+
+```bash
 sudo docker port container_id 80
+```
 
 指定基础image：`FROM <image>:<tag>`
 指定镜像创建者信息：MAINTAINER <name>
 
+```
 RUN
 ENTRYPOINT入口点
 <!--该指令的使用分为两种情况，一种是独自使用，另一种和CMD指令配合使用。
@@ -557,45 +574,54 @@ EXPOSE port1 port2 port3
 docker run -p port1 -p port2 -p port3 image
 还可以指定需要映射到宿主机器上的某个端口号
 docker run -p host_port1:port1 -p host_port2:port2 -p host_port3:port3 image
-
+```
 从src复制文件到container的dest路径
+```
 COPY <src> <dest>
 ADD <src> <dest>
 <src> 是相对被构建的源目录的相对路径，可以是文件或目录的路径，也可以是一个远程的文件url,如果是压缩包会被自动解压。
 <dest> 是container中的绝对路径s
+```
 
 指定挂载点
+
+```
 //设置指令，使容器中的一个目录具有持久化存储数据的功能，该目录可以被容器本身使用，也可以共享给其他容器使用。
 VOLUME ["<mountpoint>"]
 eg:
 VOLUME ["/tmp/data"]
-
+```
 
 切换目录
+```
 WORKDIR /path/to/workdir
 在 /p1/p2 下执行 vim a.txt
 WORKDIR /p1 WORKDIR p2 RUN vim a.txt
+```
 
 在子镜像中执行
+```
 ONBUILD <Dockerfile关键字>
-
+```
 
 创建 Dockerfile 到 push 的一个证过程：<http://www.jianshu.com/p/6cadb5b722ac>
 
 docker-compose 管理多个容器
 
 然后build该Dockerfile为一个镜像
-docker build --rm --no-cache=true -t docker-node-test .
 
-    -t 设定镜像名字 docker-node-test
-    --rm 如果已存在docker-node-test镜像，则删除docker-node-test镜像
-    --no-cache=true build时，禁止缓存
+```
+docker build --rm --no-cache=true -t docker-node-test .
+```
+-t 设定镜像名字 docker-node-test
+--rm 如果已存在docker-node-test镜像，则删除docker-node-test镜像
+--no-cache=true build时，禁止缓存
 
 
 Dockerfile其它指令可以在官网查看https://docs.docker.com/engine/reference/builder/
 
 FROM , 从一个基础镜像构建新的镜像
-
+```
 FROM ubuntu
 MAINTAINER , 维护者信息
 
@@ -629,7 +655,7 @@ ENTRYPOINT ["/usr/sbin/nginx"]
 CMD [“param1”,”param2”]
 
 CMD ["start"]
-
+```
 docker创建、启动container时执行的命令，如果设置了ENTRYPOINT，则CMD将作为参数
 Dockerfile最佳实践
 
@@ -639,23 +665,25 @@ CMD和ENTRYPOINT尽量使用json数组方式
 通过Dockerfile构建image
 
 docker build csphere/nginx:1.7 .
+
 镜像仓库Registry
 
 镜像从Dockerfile build生成后，需要将镜像推送(push)到镜像仓库。企业内部都需要构建一个私有docker registry，这个registry可以看作二进制的scm，CI/CD也需要围绕registry进行。
+
 部署registry
 
+```bash
 mkdir /registry
-
 docker run  -p 80:5000  -e STORAGE_PATH=/registry  -v /registry:/registry  registry:2.0
+```
 推送镜像保存到仓库
 
 假设192.168.1.2是registry仓库的地址：
 
+```bash
 docker tag  csphere/nginx:1.7 192.168.1.2/csphere/nginx:1.7
-
 docker push 192.168.1.2/csphere/nginx:1.7
-
-
+```
 
 ## 编排工具
 
@@ -688,24 +716,24 @@ Marathon
     - /bin/bash 是容器对应的进程
     - 守护式容器：sudo docker run -d 镜像名
 
-sudo docker ps 查看已经运行过容器的基本信息
-sudo docker stop 容器ID，停止守护式容器
-sudo service docker restart，重启 docker 服务，当修改了 docker 相关的一些配置
-sudo docker rm 容器ID，删除容器
-
-
+```bash
+sudo docker ps # 查看已经运行过容器的基本信息
+sudo docker stop 容器ID # 停止守护式容器
+sudo service docker restart # 重启 docker 服务，当修改了 docker 相关的一些配置
+sudo docker rm 容器ID # 删除容器
+```
 
 创建镜像：创建dockerfile，然后进行 build，
 
 常规下，容器重启之后，容器的IP地址是会自动变的，所以一般容器互联一般不用IP，而是在启动 docker 容器的时候附加一个参数：--link=容器名:我们要给这个要连接的容器创建的别名
 
-视频教程：
-http://www.jikexueyuan.com/path/docker/
+视频教程：http://www.jikexueyuan.com/path/docker/
 
 ubuntu下的安装
-视频教程：http://www.jikexueyuan.com/course/832_2.html?ss=1
-官网文档：http://docs.docker.com/installation/ubuntulinux/
-网络文章：http://segmentfault.com/a/1190000002485231
+
+- 视频教程：http://www.jikexueyuan.com/course/832_2.html?ss=1
+- 官网文档：http://docs.docker.com/installation/ubuntulinux/
+- 网络文章：http://segmentfault.com/a/1190000002485231
 
 1.检查内涵版本，linux内核建议是3.8以后的，Ubuntu 12.04.3及以上版本的默认内核是3.8.0 x86_64，所以ubuntu12之后的版本都不用担心
 运行命令：uname -a
@@ -716,22 +744,27 @@ Docker有很多种安装的选择，我们推荐您在Ubuntu下面安装，因�
 
 官网说明： 支持 Ubuntu 12.04 以上版本
 https://docs.docker.com/linux/step_one/
+
+```bash
 $ sudo apt-get update
 $ sudo apt-get install -y curl
 $ curl -fsSL https://get.docker.com/ | sh
-安装后，查看下docker版本，检查是否安装成功：
+
+# 安装后，查看下docker版本，检查是否安装成功：
 $ sudo docker version
 
-看docker运行状态：sudo service docker status
+# 看docker运行状态：
+sudo service docker status
 
+# 这个命令会下载一个测试用的镜像并启动一个容器运行它。
 sudo docker run hello-world
-这个命令会下载一个测试用的镜像并启动一个容器运行它。
+```
 
+### 去除掉sudo
 
-去除掉sudo
 在Ubuntu下，在执行Docker时，每次都要输入sudo，同时输入密码，很累人的，这里微调一下，把当前用户执行权限添加到相应的docker用户组里面。
 
-```
+```bash
 # 添加一个新的docker用户组
 sudo groupadd docker
 # 添加当前用户到docker用户组里，注意这里的yongboy为ubuntu server登录用户名
@@ -751,7 +784,8 @@ http://www.jingyuyun.com/article/11068.html
 
 搜索镜像：docker search 镜像名
 
-下载镜像
+### 下载镜像
+
 docker pull ubuntu命令，先将Ubuntu镜像下载到本地，默认使用的镜像标签是latest。
 
 下载国内镜像加速：
@@ -766,12 +800,21 @@ http://devdd.sinaapp.com/post-724.html
 http://www.imike.me/2016/04/20/Docker%E4%B8%8B%E4%BD%BF%E7%94%A8%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F/
 
 
-容器命名
+### 容器命名
+
+```bash
 docker run --name 容器名字 -i -t ubuntu /bin/bash
+```
 
 运行镜像：
-然后再运行docker run -i -t ubuntu /bin/bash，
-在镜像中安装ping工具：docker run learn/tutorial apt-get install -y ping
+
+```bash
+# 然后再运行
+docker run -i -t ubuntu /bin/bash
+
+# 在镜像中安装ping工具：
+docker run learn/tutorial apt-get install -y ping
+```
 
 保存在镜像中的修改，变动：
 http://www.docker.org.cn/book/docker/docer-save-changes-10.html
@@ -784,14 +827,14 @@ docker ps -a来查看当前系统中的容器列表：
 http://www.jingyuyun.com/article/11134.html
 
 
-docker 修改镜像地址
+### docker 修改镜像地址
 
 =================================
 windows下的安装：（由于docker底层用了linux的技术，所以目前windows下的环境，其实本质也是有一个linux虚拟机，所以不建议在windows下使用）
 http://www.jikexueyuan.com/course/832_3.html?ss=1
 
 
-技术资料
+### 技术资料
 
 docker中文官网：http://www.docker.org.cn/
 中文入门课程：http://www.docker.org.cn/book/docker.html
