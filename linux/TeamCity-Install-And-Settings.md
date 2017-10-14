@@ -1,9 +1,6 @@
 #  TeamCity 安装和配置
 
-
-
 - ![TeamCity](http://img.youmeek.com/2016/TeamCity.jpg)
-
 
 ## 本文初衷
 
