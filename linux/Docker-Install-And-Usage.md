@@ -133,7 +133,7 @@ Edge builds are released once per month, and are supported for that month only. 
     - 以及教你如何使用 Docker 加速器。如果你已经安装了最新版的 Docker 你就不需要用它的脚本进行安装了。
 - 最新版本的 Docker 是新增配置文件：`vim /etc/docker/daemon.json`，增加如下内容：
 
-``` bash
+```bash
 {
   "registry-mirrors": ["https://ldhc17y9.mirror.aliyuncs.com"]
 }
@@ -142,7 +142,7 @@ Edge builds are released once per month, and are supported for that month only. 
 - `sudo systemctl daemon-reload`
 - `sudo systemctl restart docker`
 - 在以后的生活中如果要经常使用阿里云做为自己仓库，那你还需要做：
-    - 在 ` namespace管理` 中创建属于你自己的 namespace：<https://cr.console.aliyun.com/#/namespace/index>
+    - 在 `namespace管理` 中创建属于你自己的 namespace：<https://cr.console.aliyun.com/#/namespace/index>
     - 创建镜像仓库：<https://cr.console.aliyun.com/#/imageList>
         - 创建好仓库后，点击：`管理` 进入查看仓库的更多详细信息，这里面有很多有用的信息，包括一个详细的操作指南，**这份指南等下会用到。**
         - 比如我自己创建的仓库，地址是阿里云给我们的：`registry.cn-shenzhen.aliyuncs.com/youmeek/open-hub`
@@ -369,8 +369,8 @@ docker images
 
 下面是上传步骤：
 
-- 登录docker login
-- 上传docker push ryzebo/docker-nodejs-test:0.1
+- 登录 `docker login`
+- 上传 `docker push ryzebo/docker-nodejs-test:0.1`
 - 此时在https://store.docker.com/搜索ryzebo/docker-nodejs-test（搜索你自己的哦），就会看到你刚刚上传的镜像了
 
 ```bash
@@ -617,7 +617,6 @@ docker build --rm --no-cache=true -t docker-node-test .
 --rm 如果已存在docker-node-test镜像，则删除docker-node-test镜像
 --no-cache=true build时，禁止缓存
 
-
 Dockerfile其它指令可以在官网查看https://docs.docker.com/engine/reference/builder/
 
 FROM , 从一个基础镜像构建新的镜像
@@ -663,9 +662,9 @@ Dockerfile最佳实践
 
 CMD和ENTRYPOINT尽量使用json数组方式
 通过Dockerfile构建image
-
+```
 docker build csphere/nginx:1.7 .
-
+```
 镜像仓库Registry
 
 镜像从Dockerfile build生成后，需要将镜像推送(push)到镜像仓库。企业内部都需要构建一个私有docker registry，这个registry可以看作二进制的scm，CI/CD也需要围绕registry进行。
@@ -710,7 +709,7 @@ Marathon
 
 1.弄懂镜像的含义
 2.弄懂容器的含义
-    - 交互式容器：sudo docker run -it centos:6 /bin/bash
+    - 交互式容器：`sudo docker run -it centos:6 /bin/bash`
             - -it 表示创建交互式容器
     - centos:6 以仓库:Tag的形式指定镜像名称
     - /bin/bash 是容器对应的进程
