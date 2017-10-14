@@ -1,0 +1,10 @@
+{
+"description": "笔者从 Java 开发角度，全方位讲解各种环境搭建及常用工具详解，是一部适合程序员的百科全书。",
+"title" : "Java 程序员眼中的 Linux",
+"language": "zh-hans",
+"author" : "AllenIverson",
+"gitbook": "3.2.3",
+"pdf": {
+        "fontFamily": "等线"
+    }
+}
