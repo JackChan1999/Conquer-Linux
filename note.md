@@ -17,3 +17,6 @@ sudo apt-get install typora
 sudo apt-get upgrade
 ```
 
+## Ubuntu下Git的安装与使用
+
+http://www.linuxidc.com/Linux/2016-09/135527.htm
