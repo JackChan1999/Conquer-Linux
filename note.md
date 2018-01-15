@@ -1,4 +1,28 @@
-## 安装Linux版Typora
+## Linux下软件的安装
+
+https://www.zhihu.com/question/19811112?sort=created
+
+- 搜狗输入法
+- chrome浏览器/Firefox
+- 网易云音乐
+- 图片处理：GIMP
+- 截屏：Shutter
+- Xmind
+- 翻墙：Shadowsocks
+- 远程控制：TeamViewer
+- GNOME 桌面环境，窗口管理Gtile
+
+### Sublime的安装
+
+http://blog.csdn.net/u011982340/article/details/45843413
+
+```
+sudo add-apt-repository ppa:webupd8team/sublime-text-3
+sudo apt-get update
+sudo apt-get install sublime-text-installer
+```
+
+### 安装Linux版Typora
 
 http://support.typora.io/Typora-on-Linux/
 
@@ -16,6 +40,26 @@ sudo apt-get install typora
 # upgrade all packages include Typora
 sudo apt-get upgrade
 ```
+
+### 播放器
+
+- smplayer
+- vlc
+- mplayer
+
+### 开发工具
+
+- C/C++：CodeBlock
+- Java：Intellij IDEA
+- Python：PyCharm
+- Android：Android studio
+- 查看Jar包：JD-GUI
+- HTML等编辑器：Sublime
+- Atom编辑器
+- Typora
+- C/C++ IDE：Visual Studio Code（VSC）
+- StarUML
+- 最好用app：终端Terminal
 
 ## Ubuntu下Git的安装与使用
 
@@ -60,3 +104,24 @@ sudo update-grub
 ```
 
 - 重启电脑
+
+## Ubuntu自动断网的问题
+
+将/etc/ppp/options 文件中的 lcp-echo-failure 4 改为 lcp-echo-failure 40
+
+或执行命令 sudo /etc/init.d/networking restart
+
+## 常用快捷键
+
+| 快捷键              | 功能说明        |
+| ---------------- | ----------- |
+| Ctrl+L           | 清屏快捷        |
+| Ctrl + Alt + T   | 打开终端        |
+| ctrl + shift + = | 放大终端窗口的字体显示 |
+| ctrl + -         | 缩小终端窗口的字体显示 |
+|                  |             |
+|                  |             |
+|                  |             |
+|                  |             |
+|                  |             |
+
