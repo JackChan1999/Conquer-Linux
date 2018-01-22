@@ -46,6 +46,22 @@ sudo apt-get upgrade
 - smplayer
 - vlc
 - mplayer
+- mpv
+
+### WPS的安装
+
+64位安装32位beta版wps需要安装以下兼容库
+
+```
+# 该命令没有用
+sudo apt-get install ia32-libs
+# 需要使用下面的命令
+sudo apt-get install libglib2.0-0:i386
+# 添加对 i386 架构的支持
+dpkg --add-architecture i386
+# 移除对 i386 架构的支持
+dpkg --remove-architecture i386
+```
 
 ### 开发工具
 
