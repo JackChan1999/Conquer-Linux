@@ -14,13 +14,27 @@ https://www.zhihu.com/question/19811112?sort=created
 
 ### Sublime的安装
 
+官方安装教程：https://www.sublimetext.com/docs/3/linux_repositories.html
+
 http://blog.csdn.net/u011982340/article/details/45843413
 
-```
+```bash
 sudo add-apt-repository ppa:webupd8team/sublime-text-3
 sudo apt-get update
 sudo apt-get install sublime-text-installer
 ```
+
+Sublime不能输入中文的问题
+
+```bash
+git clone https://github.com/lyfeyaj/sublime-text-imfix.git
+cd sublime-text-imfix
+./sublime-imfix
+```
+
+解决中文显示乱码：
+
+在Sublime Text中，按Ctrl+Shift+P打开命令行模式，输入Install Package关键字，然后点击自动出现的下拉菜单里的第一项：Package Control: Install Package。此时会看到左下角有个等号来回动，稍等一会，会再次在命令行下弹出一个下拉菜单。输入“ConvertToUTF8”和“GBK Encoding Support”，选择匹配项，安装这两个插件。
 
 ### 安装Linux版Typora
 
