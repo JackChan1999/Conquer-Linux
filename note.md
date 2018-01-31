@@ -40,7 +40,7 @@ cd sublime-text-imfix
 
 http://support.typora.io/Typora-on-Linux/
 
-```
+```bash
 # optional, but recommended
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
 
@@ -66,7 +66,7 @@ sudo apt-get upgrade
 
 64位安装32位beta版wps需要安装以下兼容库
 
-```
+```bash
 # 该命令没有用
 sudo apt-get install ia32-libs
 # 需要使用下面的命令
@@ -129,7 +129,7 @@ GRUB_CMDLINE_LINUX="acpi_backlight=asus"
 
 - 在终端输入命令 
 
-```
+```bash
 sudo update-grub
 ```
 
@@ -141,6 +141,19 @@ sudo update-grub
 
 或执行命令 sudo /etc/init.d/networking restart
 
+## 分辨率变化，密码正确无法进入桌面
+
+http://blog.csdn.net/jacktangyao/article/details/78239249
+
+```bash
+sudo apt update
+sudo apt upgrade
+# 注：装那个版本的需要根据自己的显卡型号等实际情况而定！
+sudo apt-get install nvidia-384
+sudo dpkg-reconfigure nvidia-384
+sudo reboot
+```
+
 ## 常用快捷键
 
 | 快捷键              | 功能说明        |
@@ -149,9 +162,4 @@ sudo update-grub
 | Ctrl + Alt + T   | 打开终端        |
 | ctrl + shift + = | 放大终端窗口的字体显示 |
 | ctrl + -         | 缩小终端窗口的字体显示 |
-|                  |             |
-|                  |             |
-|                  |             |
-|                  |             |
-|                  |             |
 
