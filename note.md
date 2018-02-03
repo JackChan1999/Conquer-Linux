@@ -139,7 +139,26 @@ sudo update-grub
 
 将/etc/ppp/options 文件中的 lcp-echo-failure 4 改为 lcp-echo-failure 40
 
-或执行命令 sudo /etc/init.d/networking restart
+或执行命令
+
+```bash
+# 查看系统网卡信息
+ifconfig
+# 查看无线连接情况
+iwconfig
+# 重启网络服务
+sudo service networking restart
+sudo /etc/init.d/networking restart
+sudo service network-manager restart
+# 查看网卡的硬件信息
+lshw -class network
+# 激活网卡
+sudo ifconfig 网卡设备名 up
+# 查看网卡设备信息
+lspci | grep -i net
+# 打开硬件开关
+rfkill list all
+```
 
 ## 分辨率变化，密码正确无法进入桌面
 
