@@ -1,5 +1,11 @@
 ## Linux下软件的安装
 
+```bash
+sudo apt install netease-cloud-music
+sudo apt install mpv
+sudo apt install vlc
+```
+
 https://www.zhihu.com/question/19811112?sort=created
 
 - 搜狗输入法
