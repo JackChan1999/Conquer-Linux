@@ -4,6 +4,12 @@
 sudo apt install netease-cloud-music
 sudo apt install mpv
 sudo apt install vlc
+# 删除多余的软件包
+sudo apt autoremove
+# 安装deb软件
+sudo dpkg -i softname.deb
+# 卸载deb软件
+sudo dpkg -r softname.deb
 ```
 
 https://www.zhihu.com/question/19811112?sort=created
@@ -21,6 +27,14 @@ https://www.zhihu.com/question/19811112?sort=created
 ### Sublime的安装
 
 官方安装教程：https://www.sublimetext.com/docs/3/linux_repositories.html
+
+```bash
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+# 稳定版
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+sudo apt update
+sudo apt install sublime-text
+```
 
 http://blog.csdn.net/u011982340/article/details/45843413
 
@@ -113,6 +127,8 @@ http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html
 
 ## Ubuntu屏幕亮度无法调节的问题
 
+安装显卡驱动后即可调节屏幕亮度：系统设置->软件和更新->附加驱动
+
 试了很多其他的方法，都没有用，可能是跟具体的笔记本品牌有关，以下的方法仅适用于华硕笔记本
 
 可以正常使用Fn+F5调暗，Fn+F6调亮，或者直接在系统设置中的亮度和锁屏设置亮度
@@ -169,7 +185,7 @@ rfkill list all
 
 ## 分辨率变化，密码正确无法进入桌面
 
-http://blog.csdn.net/jacktangyao/article/details/78239249
+安装显卡驱动，http://blog.csdn.net/jacktangyao/article/details/78239249
 
 ```bash
 sudo apt update
