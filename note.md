@@ -10,6 +10,9 @@ sudo apt autoremove
 sudo dpkg -i softname.deb
 # 卸载deb软件
 sudo dpkg -r softname.deb
+# 利用URL语法在命令行方式下工作的开源文件传输工具
+sudo apt install curl
+sudo npm install gitbook-cli -g
 ```
 
 https://www.zhihu.com/question/19811112?sort=created
@@ -23,6 +26,7 @@ https://www.zhihu.com/question/19811112?sort=created
 - 翻墙：Shadowsocks
 - 远程控制：TeamViewer
 - GNOME 桌面环境，窗口管理Gtile
+- [wps-office](http://wps-community.org/download.html)
 
 ### Sublime的安装
 
@@ -84,6 +88,8 @@ sudo apt-get upgrade
 
 ### WPS的安装
 
+http://wps-community.org/download.html
+
 64位安装32位beta版wps需要安装以下兼容库
 
 ```bash
@@ -96,6 +102,8 @@ dpkg --add-architecture i386
 # 移除对 i386 架构的支持
 dpkg --remove-architecture i386
 ```
+
+字体缺失解决方案：http://community.wps.cn/wiki/No_necessary_symbol_fonts
 
 ### 开发工具
 
@@ -110,6 +118,23 @@ dpkg --remove-architecture i386
 - C/C++ IDE：Visual Studio Code（VSC）
 - StarUML
 - 最好用app：终端Terminal
+
+### nodejs
+
+https://nodejs.org/en/download/package-manager/
+
+```bash
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+### calibre-ebook
+
+https://calibre-ebook.com/download_linux
+
+```bash
+sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
+```
 
 ## Ubuntu下Git的安装与使用
 
@@ -198,12 +223,21 @@ sudo reboot
 
 ## 常用快捷键
 
-| 快捷键              | 功能说明        |
-| ---------------- | ----------- |
-| Ctrl+L           | 清屏快捷        |
-| Ctrl + Alt + T   | 打开终端        |
-| ctrl + shift + = | 放大终端窗口的字体显示 |
-| ctrl + -         | 缩小终端窗口的字体显示 |
+| 快捷键           | 功能说明               |
+| ---------------- | ---------------------- |
+| Ctrl+L           | 清屏快捷               |
+| Ctrl + Alt + T   | 打开终端               |
+| Ctrl + shift + = | 放大终端窗口的字体显示 |
+| Ctrl + -         | 缩小终端窗口的字体显示 |
+| Ctrl + h         | 显示隐藏文件或文件夹   |
+
+#### Shutter
+
+截图快捷键Ctrl+Alt+A
+
+1. 里面的快捷键命令用：shutter -s 或者shutter –select
+2. 截取当前活动窗口：shutter -a （a表示active）
+3. 截取拖拉区域：shutter -s （s是select之意），拖拉出矩形区域后按Enter。
 
 ## 局域网工作机制和网络地址配置
 
@@ -282,9 +316,9 @@ sudo boot-repair
 ## 按照弹出框提示，将提示命令复制粘贴到终端，然后点击弹出框的forward按钮
 ```
 
+## Wget
 
+wget是一个命令行工具——是历史上最快的单线程传输工具，用于下载网站/批量文件，支持HTTP和FTP。 它的任务就是获取互联网。
 
-
-
-
+https://www.cnblogs.com/wuheng1991/p/5332764.html
 

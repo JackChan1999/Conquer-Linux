@@ -67,6 +67,13 @@ Tar是在Linux中使用得非常广泛的文档打包格式。它的好处就是
 ```
 # tar -jxvf archive_name.tar.bz2 -C /tmp/extract_here/
 ```
+## tar.xz
+
+```bash
+# 把xz解压成tar文件
+xz -d filename
+```
+
 ## RAR
 
 ```bash
@@ -75,6 +82,3 @@ rar e filename.rar
 # 解压rar文件，保存原文件目录结构
 rar x filename.rar
 ```
-
-
-
