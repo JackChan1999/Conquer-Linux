@@ -234,13 +234,9 @@ sudo gedit /etc/resolvconf/resolv.conf.d/base
 DNS配置文件/etc/resolvconf/resolv.conf.d/base
 ```
 auto eth0
-
 iface eth0 inet static
-
 address 192.168.1.100
-
 netmask 255.255.255.0
-
 gateway 192.168.1.1
 ```
 命令配置网络
@@ -255,6 +251,19 @@ sudo route add default gw 192.168.0.1
 
 sudo stop network-manager
 sudo start network-manager
+```
+
+## 修复Win10启动项
+
+在ubuntu试用系统下试用boot-repair修复
+
+```bash
+sudo -i
+sudo add-apt-repository ppa:yannubuntu/boot-repair
+sudo apt update
+sudo apt install boot-repair
+sudo boot-repair
+## 按照弹出框提示，将提示命令复制粘贴到终端，然后点击弹出框的forward按钮
 ```
 
 
