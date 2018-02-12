@@ -154,6 +154,7 @@ ifconfig
 iwconfig
 # 重启网络服务
 sudo service networking restart
+# 重启网络配置
 sudo /etc/init.d/networking restart
 sudo service network-manager restart
 # 查看网卡的硬件信息
@@ -192,9 +193,19 @@ sudo reboot
 
 ### IP地址
 
+```bash
+ifconfig
+# 关闭网卡
+ifconfig netname down
+# 启动网卡
+ifconfig netname up
+iwconfig
+ping servername
+```
+
 ### NETMASK
 
-子网掩码：用来判断自己属于那个网段
+子网掩码：用来判断自己属于那个网段，255.255.255.0
 
 网段的计算：IP地址的二进制 & 子网掩码的二进制 = 网段地址
 
@@ -202,11 +213,45 @@ sudo reboot
 
 ### GATEWAY
 
-网关
+网关，就是网络的总出口，也就是路由器的地址，路由器/交换机就是一个网关
 
 ### DNS
 
-域名解析服务器
+域名解析服务器，就是解析域名成对应的ip地址
+填网关地址即可
+
+### hosts文件
+
+配置域名ip映射，ip地址和对应的主机名
+
+## 网络配置
+网卡的配置文件/etc/network/interfaces
+DNS配置文件/etc/resolvconf/resolv.conf.d/base
+```
+auto eth0
+
+iface eth0 inet static
+
+address 192.168.1.100
+
+netmask 255.255.255.0
+
+gateway 192.168.1.1
+```
+命令配置网络
+```bash
+# 修改网卡IP和子网掩码
+sudo ifconfig eth0 192.168.1.1 netmask 255.255.255.0
+
+# 查看网关
+route -n
+# 修改网关
+sudo route add default gw 192.168.0.1
+
+sudo stop network-manager
+sudo start network-manager
+
+```
 
 
 
