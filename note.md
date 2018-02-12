@@ -220,6 +220,11 @@ ping servername
 域名解析服务器，就是解析域名成对应的ip地址
 填网关地址即可
 
+```bash
+# nameserver 192.168.1.1
+sudo gedit /etc/resolvconf/resolv.conf.d/base 
+```
+
 ### hosts文件
 
 配置域名ip映射，ip地址和对应的主机名
@@ -250,7 +255,6 @@ sudo route add default gw 192.168.0.1
 
 sudo stop network-manager
 sudo start network-manager
-
 ```
 
 
