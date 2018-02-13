@@ -1,14 +1,4 @@
-- [Ubuntu 网络相关设置问题](Network-Settings.md)
-- [Ubuntu 源设置](Ubuntu-Extra-Packages.md)
-- [Ubuntu 给 Dash 添加程序图标](Ubuntu-Create-Desktop.md)
-- [Ubuntu 常用设置](Ubuntu-Popular-Settings.md)
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-- []()
-
-
-
+- [Ubuntu 网络相关设置问题](ubuntu-settings/Network-Settings.md)
+- [Ubuntu 源设置](ubuntu-settings/Ubuntu-Extra-Packages.md)
+- [Ubuntu 给 Dash 添加程序图标](ubuntu-settings/Ubuntu-Create-Desktop.md)
+- [Ubuntu 常用设置](ubuntu-settings/Ubuntu-Popular-Settings.md)

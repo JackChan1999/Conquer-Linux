@@ -55,6 +55,8 @@ http://wiki.jikexueyuan.com/project/linux-in-eye-of-java/
 	* [用户权限相关命令](Linux-Basic/用户权限相关命令.md)
 	* [系统信息相关命令](Linux-Basic/系统信息相关命令.md)
 	* [其他命令](Linux-Basic/其他命令.md)
+	* [Ubuntu解压缩文件](Linux-Basic/Ubuntu解压缩.md)
+	* [Linux系统常用命令](Linux-Basic/Linux系统常用命令.md)
 * [CentOS](CentOS/README.md)
 	* [CentOS的安装配置](CentOS/01.CentOS的安装配置.md)
 	* [操作系统分区原理](CentOS/02.操作系统分区原理.md)

@@ -27,6 +27,7 @@ https://www.zhihu.com/question/19811112?sort=created
 - 远程控制：TeamViewer
 - GNOME 桌面环境，窗口管理Gtile
 - [wps-office](http://wps-community.org/download.html)
+- htop：一个比较漂亮的查看当前进程排名的软件
 
 ### Sublime的安装
 
@@ -223,13 +224,15 @@ sudo reboot
 
 ## 常用快捷键
 
-| 快捷键           | 功能说明               |
-| ---------------- | ---------------------- |
-| Ctrl+L           | 清屏快捷               |
-| Ctrl + Alt + T   | 打开终端               |
-| Ctrl + shift + = | 放大终端窗口的字体显示 |
-| Ctrl + -         | 缩小终端窗口的字体显示 |
-| Ctrl + h         | 显示隐藏文件或文件夹   |
+| 快捷键             | 功能说明               |
+| ------------------ | ---------------------- |
+| Ctrl+L             | 清屏快捷               |
+| Ctrl + Alt + T     | 打开终端               |
+| Ctrl + shift + =   | 放大终端窗口的字体显示 |
+| Ctrl + -           | 缩小终端窗口的字体显示 |
+| Ctrl + h           | 显示隐藏文件或文件夹   |
+| Ctrl + Alt + F2~F6 | 切换到命令行界面       |
+| Ctrl + Alt + F7    | 切换到桌面界面         |
 
 #### Shutter
 

@@ -94,6 +94,10 @@ $ sudo apt install 软件名
 
 # 2. 卸载软件
 $ sudo apt remove 软件名
+# 卸载所有自动安装且不再使用的软件包
+$ sudo apt autoremove
+# 卸载软件，并删除软件的配置信息
+$ sudo apt purge 软件名
 
 # 3. 更新可用软件包列表
 $ sudo apt update
