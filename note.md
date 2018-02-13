@@ -207,6 +207,12 @@ sudo ifconfig 网卡设备名 up
 lspci | grep -i net
 # 打开硬件开关
 rfkill list all
+# 查看网卡驱动是否加载
+lsmod
+# 加载网卡驱动
+modprobe
+# 开启网络管理器
+service NetworkManager start
 ```
 
 ## 分辨率变化，密码正确无法进入桌面
@@ -252,6 +258,8 @@ ifconfig
 ifconfig netname down
 # 启动网卡
 ifconfig netname up
+ifdown netname
+ifup netname
 iwconfig
 ping servername
 ```
@@ -272,6 +280,8 @@ ping servername
 
 域名解析服务器，就是解析域名成对应的ip地址
 填网关地址即可
+
+www.google.com 是主机名，google.com是域名
 
 ```bash
 # nameserver 192.168.1.1
@@ -324,4 +334,3 @@ sudo boot-repair
 wget是一个命令行工具——是历史上最快的单线程传输工具，用于下载网站/批量文件，支持HTTP和FTP。 它的任务就是获取互联网。
 
 https://www.cnblogs.com/wuheng1991/p/5332764.html
-
