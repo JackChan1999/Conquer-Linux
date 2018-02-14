@@ -19,6 +19,7 @@
 	* [远程管理常用命令](Linux-Basic/远程管理常用命令.md)
 	* [用户权限相关命令](Linux-Basic/用户权限相关命令.md)
 	* [系统信息相关命令](Linux-Basic/系统信息相关命令.md)
+	* [vi编辑器.md](Linux-Basic/vi编辑器.md)
 	* [其他命令](Linux-Basic/其他命令.md)
 	* [Ubuntu解压缩文件](Linux-Basic/Ubuntu解压缩.md)
 	* [Linux系统常用命令](Linux-Basic/Linux系统常用命令.md)

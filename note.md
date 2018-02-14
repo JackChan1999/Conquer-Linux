@@ -137,6 +137,14 @@ https://calibre-ebook.com/download_linux
 sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | sudo python -c "import sys; main=lambda:sys.stderr.write('Download failed\n'); exec(sys.stdin.read()); main()"
 ```
 
+### xmind
+
+```bash
+unzip xmind-8-update7-linux.zip -d xmind
+sudo ./setup.sh
+# 然后直接打开XMind_amd64下的XMind
+```
+
 ## Ubuntu下Git的安装与使用
 
 http://www.linuxidc.com/Linux/2016-09/135527.htm
