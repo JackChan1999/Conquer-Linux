@@ -28,6 +28,7 @@ https://www.zhihu.com/question/19811112?sort=created
 - GNOME 桌面环境，窗口管理Gtile
 - [wps-office](http://wps-community.org/download.html)
 - htop：一个比较漂亮的查看当前进程排名的软件
+- Fontmatrix/font-manager/Unity Tweak Tool 字体安装管理
 
 ### Sublime的安装
 
@@ -139,10 +140,24 @@ sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.py | 
 
 ### xmind
 
+http://blog.csdn.net/faryang/article/details/70238326
+
+https://askubuntu.com/questions/869848/how-to-install-run-xmind-v-8-in-ubuntu-16-04
+
 ```bash
 unzip xmind-8-update7-linux.zip -d xmind
 sudo ./setup.sh
 # 然后直接打开XMind_amd64下的XMind
+```
+
+### [Fontmatrix](https://github.com/fontmatrix/fontmatrix)
+
+安装字体，http://wiki.ubuntu.org.cn/%E5%AD%97%E4%BD%93
+
+```bash
+sudo mkfontscale
+sudo mkfontdir
+sudo fc-cache -fv
 ```
 
 ## Ubuntu下Git的安装与使用
