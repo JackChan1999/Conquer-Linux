@@ -289,3 +289,9 @@ sudo boot-repair
 wget是一个命令行工具——是历史上最快的单线程传输工具，用于下载网站/批量文件，支持HTTP和FTP。 它的任务就是获取互联网。
 
 https://www.cnblogs.com/wuheng1991/p/5332764.html
+
+## 书
+
+- Linux编程基础
+- Linux就该这么学
+- 鸟哥的Linux私房菜
