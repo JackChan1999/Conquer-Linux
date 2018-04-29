@@ -108,7 +108,9 @@ airodump-ng mon0
 
 个人经验一般信号强度大于-70的可以进行破解，大于-60就最好了，小于-70的不稳定，信号比较弱。（信号强度的绝对值越小表示信号越强）
 
-![img](http://image.3001.net/images/20150204/14230355329489.png!small) ![img](http://image.3001.net/images/20150204/14230355587380.png!small)
+![img](http://image.3001.net/images/20150204/14230355329489.png!small) 
+
+![img](http://image.3001.net/images/20150204/14230355587380.png!small)
 
 ![img](http://image.3001.net/images/20150204/14230356574818.png!small)
 
